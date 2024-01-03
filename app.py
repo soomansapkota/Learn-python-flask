@@ -19,16 +19,27 @@ def dologin():
     
 
 @app.route('/')
-def login():
+def home():
     return render_template("base.html")
 
-@app.route('/doSignup',methods=['GET','POST'])
-def doSignup():
-    return render_template("signup.html")
+@app.route('/login')
+def login():
+    return render_template("pages/login.html")
 
-@app.route('/home',methods=['GET','POST'])
-def goHome():
-    return render_template("home.html")
+@app.route('/register')
+def register():
+    return render_template("pages/register.html")
+
+@app.route('/forget_password')
+def forget_password():
+    return render_template("pages/forget_password.html")
+# @app.route('/doSignup',methods=['GET','POST'])
+# def doSignup():
+#     return render_template("signup.html")
+
+# @app.route('/home',methods=['GET','POST'])
+# def goHome():
+#     return render_template("home.html")
 
 
 if __name__ == '__main__':
