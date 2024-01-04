@@ -1,4 +1,6 @@
 from flask import Flask, render_template,request,redirect
+import mysql.connector
+import core.db.db_connection from DBConnection
 
 app = Flask(__name__)
 
@@ -41,6 +43,18 @@ def forget_password():
 # def goHome():
 #     return render_template("home.html")
 
-
+@app.route('/testdb')
+def test_db():
+    db_conn = DBConnection()
+    cnx,cursor=db_conn.init_conn()
+  
+    query ='select * from user;'
+    cursor.execute(query)
+    
+    res = cursor.fetchall()
+    print(res)
+    return res
+    # return "Successfully Connected"
+ 
 if __name__ == '__main__':
     app.run(debug=True)
